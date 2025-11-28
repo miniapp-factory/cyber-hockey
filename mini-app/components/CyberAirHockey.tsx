@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 
 export interface PuckType {
   id: string;
@@ -57,7 +56,7 @@ export interface GameState {
   powerUps: ActivePowerUp[];
   particles: Particle[];
   score: { left: number; right: number };
-  difficulty: keyof typeof DIFFICULTIES;
+  difficulty: keyof typeof CONSTANTS.DIFFICULTIES;
 }
 
 export interface WinnerState {
