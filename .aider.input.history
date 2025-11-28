@@ -1,0 +1,32 @@
+
+# 2025-11-28 15:42:29.993576
++Code the following app
++```
++"I want to build a Cyber Air Hockey game using React and TypeScript. Important: Do not use Tailwind CSS. We will use standard CSS.
++
++First, let's set up the structure. Please create a component named CyberAirHockey. Inside this file, I need you to define the following TypeScript Interfaces and Constants:
++
++Interfaces: PuckType, PowerUpDef, Point, EffectState, Entity, Puck, ActivePowerUp, Particle, SpriteCacheItem, GameState, and WinnerState.
++
++Constants: Define a CONSTANTS object for physics (friction, max speeds, dimensions), DIFFICULTIES settings, PUCK_TYPES (std, bonus, curse), POWERUP_TYPES (enlarge, shrink, spike, freeze, multiball), and COLORS theme.
++
++Just set up the imports, the types, the constants, and the empty main function export for now."
++```
++
++Generate an app logo and update the app metadata title and description.
+
+# 2025-11-28 15:42:29.994025
++Code the following app
++```
++"I want to build a Cyber Air Hockey game using React and TypeScript. Important: Do not use Tailwind CSS. We will use standard CSS.
++
++First, let's set up the structure. Please create a component named CyberAirHockey. Inside this file, I need you to define the following TypeScript Interfaces and Constants:
++
++Interfaces: PuckType, PowerUpDef, Point, EffectState, Entity, Puck, ActivePowerUp, Particle, SpriteCacheItem, GameState, and WinnerState.
++
++Constants: Define a CONSTANTS object for physics (friction, max speeds, dimensions), DIFFICULTIES settings, PUCK_TYPES (std, bonus, curse), POWERUP_TYPES (enlarge, shrink, spike, freeze, multiball), and COLORS theme.
++
++Just set up the imports, the types, the constants, and the empty main function export for now."
++```
++
++Generate an app logo and update the app metadata title and description.
