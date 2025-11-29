@@ -30,3 +30,33 @@
 +```
 +
 +Generate an app logo and update the app metadata title and description.
+
+# 2025-11-29 00:38:44.337030
++"Now, inside the CyberAirHockey component, let's initialize the state and refs.
++
++Refs: Create useRef hooks for canvasRef (HTMLCanvasElement), staticCanvasRef, audioCtxRef (AudioContext), requestRef (number), and a main gameState ref that initializes with the default GameState object.
++
++State: Create useState hooks for uiState ('mechanics', 'menu', 'playing', 'gameover'), scores, timerDisplay, notification, difficulty, matchMinutes, and winner.
++
++The Loop: Create the skeleton of the game loop using native requestAnimationFrame.
++
++Create a startGame function.
++
++Create a useEffect that runs the loop only when uiState === 'playing', calling empty update() and draw() functions.
++
++Ensure cleanup works by cancelling the animation frame on unmount."
+
+# 2025-11-29 00:38:44.337358
++"Now, inside the CyberAirHockey component, let's initialize the state and refs.
++
++Refs: Create useRef hooks for canvasRef (HTMLCanvasElement), staticCanvasRef, audioCtxRef (AudioContext), requestRef (number), and a main gameState ref that initializes with the default GameState object.
++
++State: Create useState hooks for uiState ('mechanics', 'menu', 'playing', 'gameover'), scores, timerDisplay, notification, difficulty, matchMinutes, and winner.
++
++The Loop: Create the skeleton of the game loop using native requestAnimationFrame.
++
++Create a startGame function.
++
++Create a useEffect that runs the loop only when uiState === 'playing', calling empty update() and draw() functions.
++
++Ensure cleanup works by cancelling the animation frame on unmount."
