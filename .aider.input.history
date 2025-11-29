@@ -60,3 +60,37 @@
 +Create a useEffect that runs the loop only when uiState === 'playing', calling empty update() and draw() functions.
 +
 +Ensure cleanup works by cancelling the animation frame on unmount."
+
+# 2025-11-29 01:13:54.739752
++Let's implement the rendering logic using the native HTML5 Canvas API.
++
++Sprite Cache: Implement a getCachedSprite useCallback. This should create a temporary document.createElement('canvas') to draw gradients for glowing circles (pucks/paddles) once and reuse them for performance.
++
++Static Board: Implement a preRenderBoard function that draws the background lines and goals to staticCanvasRef.
++
++Draw Function: Implement the main draw() function.
++
++Clear the main canvas.
++
++Draw staticCanvasRef image.
++
++Draw activePowerUps (circles with text), particles (rects), player, ai, and pucks (using the cached sprites).
++
++Helper: Include a helper drawActiveEffect to draw simple spinning rings around entities using ctx.save(), ctx.translate(), and ctx.rotate().
+
+# 2025-11-29 01:13:54.740276
++Let's implement the rendering logic using the native HTML5 Canvas API.
++
++Sprite Cache: Implement a getCachedSprite useCallback. This should create a temporary document.createElement('canvas') to draw gradients for glowing circles (pucks/paddles) once and reuse them for performance.
++
++Static Board: Implement a preRenderBoard function that draws the background lines and goals to staticCanvasRef.
++
++Draw Function: Implement the main draw() function.
++
++Clear the main canvas.
++
++Draw staticCanvasRef image.
++
++Draw activePowerUps (circles with text), particles (rects), player, ai, and pucks (using the cached sprites).
++
++Helper: Include a helper drawActiveEffect to draw simple spinning rings around entities using ctx.save(), ctx.translate(), and ctx.rotate().
