@@ -1,0 +1,170 @@
+
+# 2025-11-30 23:31:44.118471
++Code the following app
++```
++Create a single-file, responsive React Typescript Cyber Air Hockey game component designed strictly for Portrait Orientation (Vertical Layout).
++
++1. Layout & Dimensions (Portrait Mode)
++
++Orientation: The game board must be vertical.
++
++AI/Enemy Position: Top half of the screen.
++
++Player Position: Bottom half of the screen.
++
++Responsiveness:
++
++On Mobile: The game should occupy 100% of the screen width and height.
++
++On Desktop: The game container should be centered with a maximum width of 480px (simulating a mobile phone view) and a height of 90vh to 100vh. The background outside the game container should be dark/blurred to focus attention on the board.
++
++Field Elements:
++
++A horizontal center line separating the player and enemy territories.
++
++Angled lines at all four corners to prevent the puck from getting stuck in dead zones.
++
++Goal Lines: Located at the very top-center (Enemy Goal) and very bottom-center (Player Goal).
++
++2. Game Flow & UI Screens
++
++Main Menu:
++
++Title: "CYBER HOCKEY".
++
++"Mechanics" Button: Opens a modal or tab explaining controls (drag to move).
++
++"Play" Button: Leads to the Setup Screen.
++
++Setup Screen:
++
++Difficulty Selector:
++
++Easy: AI moves slowly and reacts late.
++
++Medium: Balanced speed and reaction.
++
++Hard: fast movement and predictive blocking.
++
++Time Selector: A slider or input to set the match duration (Minimum: 1 minute, Maximum: 5 minutes).
++
++Start Match Button: Launches the game.
++
++Game Loop (Time & Score Based):
++
++The game runs until the selected timer reaches 0:00.
++
++Scoreboard displayed clearly at the top (AI Score) and bottom (Player Score) or side-by-side in a HUD.
++
++Win Condition: When time expires, the side with the higher score wins. If tied, enter "Sudden Death" (next goal wins).
++
++3. Visual Style (Cyber/Futuristic)
++
++Color Palette: Deep Black/Navy background with Neon Blue (Player theme) and Neon Violet/Purple (Enemy theme).
++
++Effects:
++
++Everything should have a "Glow" effect (CSS box-shadows or bloom).
++
++The Puck should leave a faint trail or have a strong glow.
++
++The UI buttons should look like holographic interfaces.
++
++4. Technical Requirements
++
++Use standard HTML, CSS, and JavaScript.
++
++Controls: Touch events (for mobile) and Mouse events (for desktop) to drag the paddle. The paddle must be constrained to its own half of the board.
++
++Place the CyberAirHockey game component on the home page.
++```
++
++Generate an app logo and update the app metadata title and description.
+
+# 2025-11-30 23:31:44.118976
++Code the following app
++```
++Create a single-file, responsive React Typescript Cyber Air Hockey game component designed strictly for Portrait Orientation (Vertical Layout).
++
++1. Layout & Dimensions (Portrait Mode)
++
++Orientation: The game board must be vertical.
++
++AI/Enemy Position: Top half of the screen.
++
++Player Position: Bottom half of the screen.
++
++Responsiveness:
++
++On Mobile: The game should occupy 100% of the screen width and height.
++
++On Desktop: The game container should be centered with a maximum width of 480px (simulating a mobile phone view) and a height of 90vh to 100vh. The background outside the game container should be dark/blurred to focus attention on the board.
++
++Field Elements:
++
++A horizontal center line separating the player and enemy territories.
++
++Angled lines at all four corners to prevent the puck from getting stuck in dead zones.
++
++Goal Lines: Located at the very top-center (Enemy Goal) and very bottom-center (Player Goal).
++
++2. Game Flow & UI Screens
++
++Main Menu:
++
++Title: "CYBER HOCKEY".
++
++"Mechanics" Button: Opens a modal or tab explaining controls (drag to move).
++
++"Play" Button: Leads to the Setup Screen.
++
++Setup Screen:
++
++Difficulty Selector:
++
++Easy: AI moves slowly and reacts late.
++
++Medium: Balanced speed and reaction.
++
++Hard: fast movement and predictive blocking.
++
++Time Selector: A slider or input to set the match duration (Minimum: 1 minute, Maximum: 5 minutes).
++
++Start Match Button: Launches the game.
++
++Game Loop (Time & Score Based):
++
++The game runs until the selected timer reaches 0:00.
++
++Scoreboard displayed clearly at the top (AI Score) and bottom (Player Score) or side-by-side in a HUD.
++
++Win Condition: When time expires, the side with the higher score wins. If tied, enter "Sudden Death" (next goal wins).
++
++3. Visual Style (Cyber/Futuristic)
++
++Color Palette: Deep Black/Navy background with Neon Blue (Player theme) and Neon Violet/Purple (Enemy theme).
++
++Effects:
++
++Everything should have a "Glow" effect (CSS box-shadows or bloom).
++
++The Puck should leave a faint trail or have a strong glow.
++
++The UI buttons should look like holographic interfaces.
++
++4. Technical Requirements
++
++Use standard HTML, CSS, and JavaScript.
++
++Controls: Touch events (for mobile) and Mouse events (for desktop) to drag the paddle. The paddle must be constrained to its own half of the board.
++
++Place the CyberAirHockey game component on the home page.
++```
++
++Generate an app logo and update the app metadata title and description.
+
+# 2025-11-30 23:32:23.916098
++apply changes
+
+# 2025-11-30 23:32:23.916374
++apply changes
