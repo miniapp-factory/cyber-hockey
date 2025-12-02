@@ -220,11 +220,17 @@ useEffect(() => {
     PADDLE_RADIUS,
     Math.min(puckPos.x, w - PADDLE_RADIUS)
   );
+  const targetY =
+    puckPos.y <= h / 2
+      ? Math.min(puckPos.y, h / 2 - PADDLE_HEIGHT)
+      : h / 2 - PADDLE_HEIGHT;
   setOpponentPaddlePos((prev) => {
     const dx = targetX - prev.x;
+    const dy = targetY - prev.y;
     const maxSpeed = AI_SPEED;
     const clampedDx = Math.max(-maxSpeed, Math.min(dx, maxSpeed));
-    return { x: prev.x + clampedDx, y: prev.y };
+    const clampedDy = Math.max(-maxSpeed, Math.min(dy, maxSpeed));
+    return { x: prev.x + clampedDx, y: prev.y + clampedDy };
   });
 }, [puckPos, canvasRef]);
 
