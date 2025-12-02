@@ -230,3 +230,9 @@
 +Angled lines at all four corners to prevent the puck from getting stuck in dead zones.
 +
 +Goal Lines: Located at the very top-center (Enemy Goal) and very bottom-center (Player Goal).
+
+# 2025-12-02 03:34:47.178371
++The paddle boundary of the player should be the bottom half board. Please fix it.
+
+# 2025-12-02 03:34:47.178820
++The paddle boundary of the player should be the bottom half board. Please fix it.
