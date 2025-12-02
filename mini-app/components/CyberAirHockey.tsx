@@ -196,7 +196,7 @@ export default function CyberAirHockey() {
       // Goal detection
       const goalWidth = 150;
       const goalHeight = 10;
-      const goalX = size / 2 - goalWidth / 2;
+      const goalX = canvas.width / 2 - goalWidth / 2;
 
       if (puckPos.y <= goalHeight && puckPos.x >= goalX && puckPos.x <= goalX + goalWidth) {
         setScore((s) => ({ ...s, player: s.player + 1 }));
