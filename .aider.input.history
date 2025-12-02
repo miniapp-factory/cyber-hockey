@@ -322,3 +322,13 @@
 +AI sets opponent paddle x to targetX immediately, causing teleportation and unrealistic movement. Also AI doesn't restrict movement to its half in a robust way (target clamps are based on BOARD_SIZE).
 +Recommendation: interpolate AI movement by limiting max speed, and ensure AI only moves within its half (use canvas.height/2 boundary).
 +
+
+# 2025-12-02 12:44:38.162817
++Make the left and right bounce back the puck, and also if the puck stuck on to the corner make it bounce back to the field/area of the game.
++
++Also, Improve AI to move gradually and restrict to its half. 
+
+# 2025-12-02 12:44:38.163197
++Make the left and right bounce back the puck, and also if the puck stuck on to the corner make it bounce back to the field/area of the game.
++
++Also, Improve AI to move gradually and restrict to its half. 
