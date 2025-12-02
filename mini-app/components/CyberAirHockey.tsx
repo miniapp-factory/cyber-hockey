@@ -143,8 +143,14 @@ export default function CyberAirHockey() {
         newPos.x = newPos.x <= PUCK_SIZE / 2 ? PUCK_SIZE / 2 : canvas.width - PUCK_SIZE / 2;
       }
       if (newPos.y <= PUCK_SIZE / 2 || newPos.y >= canvas.height - PUCK_SIZE / 2) {
-        newVel.y = -newVel.y * 0.8;
-        newPos.y = newPos.y <= PUCK_SIZE / 2 ? PUCK_SIZE / 2 : canvas.height - PUCK_SIZE / 2;
+        const goalWidth = 150;
+        const goalX = canvas.width / 2 - goalWidth / 2;
+        if (newPos.x >= goalX && newPos.x <= goalX + goalWidth) {
+          // allow puck to pass through goal area without bouncing
+        } else {
+          newVel.y = -newVel.y * 0.8;
+          newPos.y = newPos.y <= PUCK_SIZE / 2 ? PUCK_SIZE / 2 : canvas.height - PUCK_SIZE / 2;
+        }
       }
 
       // Collision with paddles
