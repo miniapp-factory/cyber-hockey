@@ -354,3 +354,17 @@
 
 # 2025-12-02 13:47:51.070426
 +the opponent's paddle still crossing to the blue line in the middle, don't make the opponent's paddle cross that blue line or maybe add some allowance so that it cannot cross the blue line.
+
+# 2025-12-02 14:02:37.750925
++Now, it fixed the opponent's paddle not crossing the blue line. Next let's proceed to the next problem:
++
++Problem: the puck glitched or stuck if it collide in to the left or right side of the wall
++
++My Solution I suggest to implement: Make the puck when collide into the left or right side wall, it will reflect or bounces to that wall depend on the force of the puck. Like in 8 ball pool game but still the game is cyber air hockey.
+
+# 2025-12-02 14:02:37.751274
++Now, it fixed the opponent's paddle not crossing the blue line. Next let's proceed to the next problem:
++
++Problem: the puck glitched or stuck if it collide in to the left or right side of the wall
++
++My Solution I suggest to implement: Make the puck when collide into the left or right side wall, it will reflect or bounces to that wall depend on the force of the puck. Like in 8 ball pool game but still the game is cyber air hockey.
