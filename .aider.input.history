@@ -284,3 +284,17 @@
 +
 +Adjust the size of the puck a little bit bigger and not bigger than the paddle.
 +
+
+# 2025-12-02 10:32:17.001517
++Mixing BOARD_SIZE constant with canvas.width/height (inconsistent coordinate space)
++
++The code uses BOARD_SIZE (480) for collisions, constraints, goal detection, and reset coordinates, but the actual canvas size is set dynamically to parent size (canvas.width). This will cause collisions, goals, respawn, and clamps to behave incorrectly when the canvas is not exactly 480 px.
++Affected places: wall/corner collision checks (update), goal detection, resetPuck (center uses BOARD_SIZE/2), AI bounds (Math.min(..., BOARD_SIZE - PADDLE_WIDTH)), clamp in handlePointerMove uses canvas.width in y but compares to canvas.width / 2 etc.
++Recommendation: use the canvas actual size (canvas.width and canvas.height) everywhere instead of BOARD_SIZE, or compute a scale factor and transform coordinates consistently.
+
+# 2025-12-02 10:32:17.001903
++Mixing BOARD_SIZE constant with canvas.width/height (inconsistent coordinate space)
++
++The code uses BOARD_SIZE (480) for collisions, constraints, goal detection, and reset coordinates, but the actual canvas size is set dynamically to parent size (canvas.width). This will cause collisions, goals, respawn, and clamps to behave incorrectly when the canvas is not exactly 480 px.
++Affected places: wall/corner collision checks (update), goal detection, resetPuck (center uses BOARD_SIZE/2), AI bounds (Math.min(..., BOARD_SIZE - PADDLE_WIDTH)), clamp in handlePointerMove uses canvas.width in y but compares to canvas.width / 2 etc.
++Recommendation: use the canvas actual size (canvas.width and canvas.height) everywhere instead of BOARD_SIZE, or compute a scale factor and transform coordinates consistently.
