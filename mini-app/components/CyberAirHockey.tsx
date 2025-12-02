@@ -12,7 +12,8 @@ type Position = { x: number; y: number };
 
 export default function CyberAirHockey() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [paddlePos, setPaddlePos] = useState<Position>({ x: BOARD_SIZE / 2 - PADDLE_WIDTH / 2, y: BOARD_SIZE - 40 });
+  const [paddlePos, setPaddlePos] = useState<Position>({ x: BOARD_SIZE / 2 - PADDLE_WIDTH / 2, y: BOARD_SIZE - PADDLE_HEIGHT - 10 });
+  const [opponentPaddlePos, setOpponentPaddlePos] = useState<Position>({ x: BOARD_SIZE / 2 - PADDLE_WIDTH / 2, y: 10 });
   const [puckPos, setPuckPos] = useState<Position>({ x: BOARD_SIZE / 2, y: BOARD_SIZE / 2 });
   const [puckVel, setPuckVel] = useState<Position>({ x: 2, y: 2 });
   const [score, setScore] = useState({ player: 0, enemy: 0 });
@@ -75,7 +76,13 @@ export default function CyberAirHockey() {
       ctx.fillRect(size / 2 - 50, 0, 100, 5); // enemy goal
       ctx.fillRect(size / 2 - 50, size - 5, 100, 5); // player goal
 
-      // Draw paddle
+      // Draw opponent paddle
+      ctx.fillStyle = "#f0f";
+      ctx.shadowColor = "#f0f";
+      ctx.shadowBlur = 10;
+      ctx.fillRect(opponentPaddlePos.x, opponentPaddlePos.y, PADDLE_WIDTH, PADDLE_HEIGHT);
+
+      // Draw player paddle
       ctx.fillStyle = "#00f";
       ctx.shadowColor = "#00f";
       ctx.shadowBlur = 10;
@@ -112,6 +119,18 @@ export default function CyberAirHockey() {
         if (puckPos.y <= PUCK_SIZE / 2 || puckPos.y >= BOARD_SIZE - PUCK_SIZE / 2) ny = -prev.y;
         return { x: nx, y: ny };
       });
+
+      // Collision with paddles
+      const paddleCollision = (paddle: Position) => {
+        const dx = puckPos.x - (paddle.x + PADDLE_WIDTH / 2);
+        const dy = puckPos.y - (paddle.y + PADDLE_HEIGHT / 2);
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        return distance < PUCK_SIZE / 2 + Math.max(PADDLE_WIDTH, PADDLE_HEIGHT) / 2;
+      };
+
+      if (paddleCollision(paddlePos) || paddleCollision(opponentPaddlePos)) {
+        setPuckVel((prev) => ({ x: -prev.x, y: -prev.y }));
+      }
 
       // Goal detection
       if (puckPos.y <= PUCK_SIZE / 2) {
