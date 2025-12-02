@@ -15,6 +15,8 @@ export default function CyberAirHockey() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [paddlePos, setPaddlePos] = useState<Position>({ x: BOARD_SIZE / 2 - PADDLE_WIDTH / 2, y: BOARD_SIZE - PADDLE_HEIGHT - 10 });
   const [opponentPaddlePos, setOpponentPaddlePos] = useState<Position>({ x: BOARD_SIZE / 2 - PADDLE_WIDTH / 2, y: 10 });
+  const prevPaddlePos = useRef<Position>(paddlePos);
+  const prevOpponentPaddlePos = useRef<Position>(opponentPaddlePos);
   const [puckPos, setPuckPos] = useState<Position>({ x: BOARD_SIZE / 2, y: BOARD_SIZE / 2 });
   const [puckVel, setPuckVel] = useState<Position>({ x: 2, y: 2 });
   const [score, setScore] = useState({ player: 0, enemy: 0 });
@@ -150,7 +152,15 @@ export default function CyberAirHockey() {
       };
 
       if (paddleCollision(paddlePos) || paddleCollision(opponentPaddlePos)) {
-        setPuckVel((prev) => ({ x: -prev.x, y: -prev.y }));
+        const paddle = paddleCollision(paddlePos) ? paddlePos : opponentPaddlePos;
+        const prevPaddle = paddleCollision(paddlePos) ? prevPaddlePos.current : prevOpponentPaddlePos.current;
+        const paddleSpeed = Math.hypot(paddle.x - prevPaddle.x, paddle.y - prevPaddle.y);
+        const angle = Math.atan2(puckPos.y - (paddle.y + PADDLE_RADIUS), puckPos.x - (paddle.x + PADDLE_RADIUS));
+        const speed = Math.hypot(puckVel.x, puckVel.y) + paddleSpeed * 0.5;
+        setPuckVel({
+          x: Math.cos(angle) * speed,
+          y: Math.sin(angle) * speed,
+        });
       }
       const cornerCollision = () => {
         const corners = [
