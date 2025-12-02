@@ -8,6 +8,7 @@ const PADDLE_HEIGHT = 20;
 const PUCK_SIZE = 30;
 const PADDLE_RADIUS = 40;
 const FPS = 60;
+const AI_SPEED = 4;
 
 type Position = { x: number; y: number };
 
