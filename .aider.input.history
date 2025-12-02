@@ -390,3 +390,9 @@
 
 # 2025-12-02 15:53:56.443233
 +Still not fixing the puck bounces back when collided in the each side of the wall.
+
+# 2025-12-02 16:43:27.808131
++Make the wall based on the game canvas UI, and make the puck bounce into each walls and corners.
+
+# 2025-12-02 16:43:27.808652
++Make the wall based on the game canvas UI, and make the puck bounce into each walls and corners.
