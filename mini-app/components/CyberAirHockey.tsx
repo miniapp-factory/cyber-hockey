@@ -201,7 +201,7 @@ export default function CyberAirHockey() {
       if (puckPos.y <= goalHeight && puckPos.x >= goalX && puckPos.x <= goalX + goalWidth) {
         setScore((s) => ({ ...s, player: s.player + 1 }));
         resetPuck();
-      } else if (puckPos.y >= size - goalHeight && puckPos.x >= goalX && puckPos.x <= goalX + goalWidth) {
+      } else if (puckPos.y >= canvas.height - goalHeight && puckPos.x >= goalX && puckPos.x <= goalX + goalWidth) {
         setScore((s) => ({ ...s, enemy: s.enemy + 1 }));
         resetPuck();
       }
