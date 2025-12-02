@@ -141,12 +141,20 @@ export default function CyberAirHockey() {
         let ny = prev.y;
         // Left/right wall collision – reflect the horizontal velocity
         if (puckPos.x <= PUCK_SIZE / 2 || puckPos.x >= canvas.width - PUCK_SIZE / 2) {
-          // Reflect and slightly dampen to simulate friction
           nx = -prev.x * 0.95;
+          // reposition puck to boundary to avoid sticking
+          setPuckPos((p) => ({
+            x: puckPos.x <= PUCK_SIZE / 2 ? PUCK_SIZE / 2 : canvas.width - PUCK_SIZE / 2,
+            y: p.y,
+          }));
         }
         // Top/bottom wall collision – reflect the vertical velocity
         if (puckPos.y <= PUCK_SIZE / 2 || puckPos.y >= canvas.height - PUCK_SIZE / 2) {
           ny = -prev.y * 0.95;
+          setPuckPos((p) => ({
+            x: p.x,
+            y: puckPos.y <= PUCK_SIZE / 2 ? PUCK_SIZE / 2 : canvas.height - PUCK_SIZE / 2,
+          }));
         }
         return { x: nx, y: ny };
       });
@@ -182,11 +190,19 @@ export default function CyberAirHockey() {
           const dy = puckPos.y - corner.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           if (distance < PUCK_SIZE / 2 + 10) {
-            // If the puck is stuck on a corner, give it a random bounce back into the field
+            // Reflect velocity based on corner normal
+            const nx = dx / distance;
+            const ny = dy / distance;
+            const dot = puckVel.x * nx + puckVel.y * ny;
             setPuckVel({
-              x: Math.random() * 4 - 2,
-              y: Math.random() * 4 - 2,
+              x: puckVel.x - 2 * dot * nx,
+              y: puckVel.y - 2 * dot * ny,
             });
+            // reposition puck slightly inside
+            setPuckPos((p) => ({
+              x: corner.x + (PUCK_SIZE / 2 + 10) * nx,
+              y: corner.y + (PUCK_SIZE / 2 + 10) * ny,
+            }));
             break;
           }
         }
