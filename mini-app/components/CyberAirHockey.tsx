@@ -175,7 +175,11 @@ export default function CyberAirHockey() {
           const dy = puckPos.y - corner.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           if (distance < PUCK_SIZE / 2 + 10) {
-            setPuckVel((prev) => ({ x: -prev.x, y: -prev.y }));
+            // If the puck is stuck on a corner, give it a random bounce back into the field
+            setPuckVel({
+              x: Math.random() * 4 - 2,
+              y: Math.random() * 4 - 2,
+            });
             break;
           }
         }
