@@ -332,3 +332,9 @@
 +Make the left and right bounce back the puck, and also if the puck stuck on to the corner make it bounce back to the field/area of the game.
 +
 +Also, Improve AI to move gradually and restrict to its half. 
+
+# 2025-12-02 13:20:17.818261
++Can you make the opponent smarter, like if puck detected on its area, then the opponent will slowly go to the puck that entered on opponent area and the opponent paddle it into the player's area, restricted only the opponent's area or field.
+
+# 2025-12-02 13:20:17.818634
++Can you make the opponent smarter, like if puck detected on its area, then the opponent will slowly go to the puck that entered on opponent area and the opponent paddle it into the player's area, restricted only the opponent's area or field.
