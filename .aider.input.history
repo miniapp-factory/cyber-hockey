@@ -338,3 +338,13 @@
 
 # 2025-12-02 13:20:17.818634
 +Can you make the opponent smarter, like if puck detected on its area, then the opponent will slowly go to the puck that entered on opponent area and the opponent paddle it into the player's area, restricted only the opponent's area or field.
+
+# 2025-12-02 13:32:57.290981
++Now, puck moves vertical but the problem is the opponent's paddle vertically getting out into the blue line of the middle, please adjust the boundary of opponent's paddle that restrict to its half or within it's area. Additionally, if the puck is within the player area and not on opponent's area, make the opponent's paddle back to the top but still follows where the puck position horizontally. But make sure the functionality of the game still workout.
++
++
+
+# 2025-12-02 13:32:57.291343
++Now, puck moves vertical but the problem is the opponent's paddle vertically getting out into the blue line of the middle, please adjust the boundary of opponent's paddle that restrict to its half or within it's area. Additionally, if the puck is within the player area and not on opponent's area, make the opponent's paddle back to the top but still follows where the puck position horizontally. But make sure the functionality of the game still workout.
++
++
