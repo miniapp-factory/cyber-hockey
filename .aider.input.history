@@ -396,3 +396,9 @@
 
 # 2025-12-02 16:43:27.808652
 +Make the wall based on the game canvas UI, and make the puck bounce into each walls and corners.
+
+# 2025-12-02 17:37:28.341549
++If the puck collided into the yellow line of the player's  goal line or opponent yellow line, then the player point increase to 1. Same to the player's yellow line or opponent's goal then it increase the point 1, every goal. Until, those who get 5 points first, will win.
+
+# 2025-12-02 17:37:28.342081
++If the puck collided into the yellow line of the player's  goal line or opponent yellow line, then the player point increase to 1. Same to the player's yellow line or opponent's goal then it increase the point 1, every goal. Until, those who get 5 points first, will win.
