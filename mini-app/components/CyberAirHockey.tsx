@@ -130,39 +130,26 @@ export default function CyberAirHockey() {
 
     const update = () => {
       // Move puck
-      setPuckPos((prev) => ({
-        x: prev.x + puckVel.x,
-        y: prev.y + puckVel.y,
-      }));
+      const newPos = {
+        x: puckPos.x + puckVel.x,
+        y: puckPos.y + puckVel.y,
+      };
 
       // Collision with walls
-      setPuckVel((prev) => {
-        let nx = prev.x;
-        let ny = prev.y;
-        // Left/right wall collision – reflect the horizontal velocity
-        if (puckPos.x <= PUCK_SIZE / 2 || puckPos.x >= canvas.width - PUCK_SIZE / 2) {
-          nx = -prev.x * 0.95;
-          // reposition puck to boundary to avoid sticking
-          setPuckPos((p) => ({
-            x: puckPos.x <= PUCK_SIZE / 2 ? PUCK_SIZE / 2 : canvas.width - PUCK_SIZE / 2,
-            y: p.y,
-          }));
-        }
-        // Top/bottom wall collision – reflect the vertical velocity
-        if (puckPos.y <= PUCK_SIZE / 2 || puckPos.y >= canvas.height - PUCK_SIZE / 2) {
-          ny = -prev.y * 0.95;
-          setPuckPos((p) => ({
-            x: p.x,
-            y: puckPos.y <= PUCK_SIZE / 2 ? PUCK_SIZE / 2 : canvas.height - PUCK_SIZE / 2,
-          }));
-        }
-        return { x: nx, y: ny };
-      });
+      let newVel = { ...puckVel };
+      if (newPos.x <= PUCK_SIZE / 2 || newPos.x >= canvas.width - PUCK_SIZE / 2) {
+        newVel.x = -newVel.x * 0.95;
+        newPos.x = newPos.x <= PUCK_SIZE / 2 ? PUCK_SIZE / 2 : canvas.width - PUCK_SIZE / 2;
+      }
+      if (newPos.y <= PUCK_SIZE / 2 || newPos.y >= canvas.height - PUCK_SIZE / 2) {
+        newVel.y = -newVel.y * 0.95;
+        newPos.y = newPos.y <= PUCK_SIZE / 2 ? PUCK_SIZE / 2 : canvas.height - PUCK_SIZE / 2;
+      }
 
       // Collision with paddles
       const paddleCollision = (paddle: Position) => {
-        const dx = puckPos.x - (paddle.x + PADDLE_RADIUS);
-        const dy = puckPos.y - (paddle.y + PADDLE_RADIUS);
+        const dx = newPos.x - (paddle.x + PADDLE_RADIUS);
+        const dy = newPos.y - (paddle.y + PADDLE_RADIUS);
         const distance = Math.sqrt(dx * dx + dy * dy);
         return distance < PUCK_SIZE / 2 + PADDLE_RADIUS;
       };
@@ -171,56 +158,56 @@ export default function CyberAirHockey() {
         const paddle = paddleCollision(paddlePos) ? paddlePos : opponentPaddlePos;
         const prevPaddle = paddleCollision(paddlePos) ? prevPaddlePos.current : prevOpponentPaddlePos.current;
         const paddleSpeed = Math.hypot(paddle.x - prevPaddle.x, paddle.y - prevPaddle.y);
-        const angle = Math.atan2(puckPos.y - (paddle.y + PADDLE_RADIUS), puckPos.x - (paddle.x + PADDLE_RADIUS));
-        const speed = Math.hypot(puckVel.x, puckVel.y) + paddleSpeed * 0.5;
-        setPuckVel({
+        const angle = Math.atan2(newPos.y - (paddle.y + PADDLE_RADIUS), newPos.x - (paddle.x + PADDLE_RADIUS));
+        const speed = Math.hypot(newVel.x, newVel.y) + paddleSpeed * 0.5;
+        newVel = {
           x: Math.cos(angle) * speed,
           y: Math.sin(angle) * speed,
-        });
+        };
       }
-      const cornerCollision = () => {
-        const corners = [
-          { x: 0, y: 0 },
-          { x: canvas.width, y: 0 },
-          { x: 0, y: canvas.height },
-          { x: canvas.width, y: canvas.height },
-        ];
-        for (const corner of corners) {
-          const dx = puckPos.x - corner.x;
-          const dy = puckPos.y - corner.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance < PUCK_SIZE / 2 + 10) {
-            // Reflect velocity based on corner normal
-            const nx = dx / distance;
-            const ny = dy / distance;
-            const dot = puckVel.x * nx + puckVel.y * ny;
-            setPuckVel({
-              x: puckVel.x - 2 * dot * nx,
-              y: puckVel.y - 2 * dot * ny,
-            });
-            // reposition puck slightly inside
-            setPuckPos((p) => ({
-              x: corner.x + (PUCK_SIZE / 2 + 10) * nx,
-              y: corner.y + (PUCK_SIZE / 2 + 10) * ny,
-            }));
-            break;
-          }
+
+      // Corner collision
+      const corners = [
+        { x: 0, y: 0 },
+        { x: canvas.width, y: 0 },
+        { x: 0, y: canvas.height },
+        { x: canvas.width, y: canvas.height },
+      ];
+      for (const corner of corners) {
+        const dx = newPos.x - corner.x;
+        const dy = newPos.y - corner.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < PUCK_SIZE / 2 + 10) {
+          const nx = dx / distance;
+          const ny = dy / distance;
+          const dot = newVel.x * nx + newVel.y * ny;
+          newVel = {
+            x: newVel.x - 2 * dot * nx,
+            y: newVel.y - 2 * dot * ny,
+          };
+          newPos.x = corner.x + (PUCK_SIZE / 2 + 10) * nx;
+          newPos.y = corner.y + (PUCK_SIZE / 2 + 10) * ny;
+          break;
         }
-      };
-      cornerCollision();
+      }
 
       // Goal detection
       const goalWidth = 150;
       const goalHeight = 10;
       const goalX = canvas.width / 2 - goalWidth / 2;
 
-      if (puckPos.y <= goalHeight && puckPos.x >= goalX && puckPos.x <= goalX + goalWidth) {
+      if (newPos.y <= goalHeight && newPos.x >= goalX && newPos.x <= goalX + goalWidth) {
         setScore((s) => ({ ...s, player: s.player + 1 }));
         resetPuck();
-      } else if (puckPos.y >= canvas.height - goalHeight && puckPos.x >= goalX && puckPos.x <= goalX + goalWidth) {
+        return;
+      } else if (newPos.y >= canvas.height - goalHeight && newPos.x >= goalX && newPos.x <= goalX + goalWidth) {
         setScore((s) => ({ ...s, enemy: s.enemy + 1 }));
         resetPuck();
+        return;
       }
+
+      setPuckPos(newPos);
+      setPuckVel(newVel);
     };
 
     const resetPuck = () => {
