@@ -162,9 +162,11 @@ export default function CyberAirHockey() {
     if (!rect) return;
     const x = e.clientX - rect.left - PADDLE_WIDTH / 2;
     const y = e.clientY - rect.top - PADDLE_HEIGHT / 2;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
     setPaddlePos({
-      x: Math.max(0, Math.min(x, BOARD_SIZE - PADDLE_WIDTH)),
-      y: Math.max(BOARD_SIZE / 2, Math.min(y, BOARD_SIZE - PADDLE_HEIGHT)),
+      x: Math.max(0, Math.min(x, canvas.width - PADDLE_WIDTH)),
+      y: Math.max(canvas.width / 2, Math.min(y, canvas.width - PADDLE_HEIGHT)),
     });
   };
 
