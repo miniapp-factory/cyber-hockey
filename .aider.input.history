@@ -402,3 +402,9 @@
 
 # 2025-12-02 17:37:28.342081
 +If the puck collided into the yellow line of the player's  goal line or opponent yellow line, then the player point increase to 1. Same to the player's yellow line or opponent's goal then it increase the point 1, every goal. Until, those who get 5 points first, will win.
+
+# 2025-12-02 18:04:11.982347
++reduce the bounce back power when the puck collided into the walls, but the puck collided into corner, bounce back power is fine(no change into the corners bounce back power, but only  reduce the walls bounce back power of the puck, if collided into the walls).
+
+# 2025-12-02 18:04:11.983431
++reduce the bounce back power when the puck collided into the walls, but the puck collided into corner, bounce back power is fine(no change into the corners bounce back power, but only  reduce the walls bounce back power of the puck, if collided into the walls).
