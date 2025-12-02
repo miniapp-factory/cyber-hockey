@@ -180,3 +180,53 @@
 
 # 2025-12-01 17:20:40.288715
 +make the game CyberAirHockey size emphasize in home page, like 850 pixel height),  and the width is half of screen (50% width).(it's much better that it's responsive and mobile friendly
+
+# 2025-12-02 00:38:55.454766
++Let's redo it! Fix the area of the player where they can move freely. Same, for the opponent.
++
++1. Layout & Dimensions (Portrait Mode)
++
++Orientation: The game board must be vertical.
++
++AI/Enemy Position: Top half of the screen.
++
++Player Position: Bottom half of the screen.
++
++Responsiveness:
++
++On Mobile: The game should occupy 100% of the screen width and height.
++
++On Desktop: The game container should be centered with a maximum width of 480px (simulating a mobile phone view) and a height of 90vh to 100vh. The background outside the game container should be dark/blurred to focus attention on the board.
++
++Field Elements:
++
++A horizontal center line separating the player and enemy territories.
++
++Angled lines at all four corners to prevent the puck from getting stuck in dead zones.
++
++Goal Lines: Located at the very top-center (Enemy Goal) and very bottom-center (Player Goal).
+
+# 2025-12-02 00:38:55.455440
++Let's redo it! Fix the area of the player where they can move freely. Same, for the opponent.
++
++1. Layout & Dimensions (Portrait Mode)
++
++Orientation: The game board must be vertical.
++
++AI/Enemy Position: Top half of the screen.
++
++Player Position: Bottom half of the screen.
++
++Responsiveness:
++
++On Mobile: The game should occupy 100% of the screen width and height.
++
++On Desktop: The game container should be centered with a maximum width of 480px (simulating a mobile phone view) and a height of 90vh to 100vh. The background outside the game container should be dark/blurred to focus attention on the board.
++
++Field Elements:
++
++A horizontal center line separating the player and enemy territories.
++
++Angled lines at all four corners to prevent the puck from getting stuck in dead zones.
++
++Goal Lines: Located at the very top-center (Enemy Goal) and very bottom-center (Player Goal).
