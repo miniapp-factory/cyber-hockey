@@ -348,3 +348,9 @@
 +Now, puck moves vertical but the problem is the opponent's paddle vertically getting out into the blue line of the middle, please adjust the boundary of opponent's paddle that restrict to its half or within it's area. Additionally, if the puck is within the player area and not on opponent's area, make the opponent's paddle back to the top but still follows where the puck position horizontally. But make sure the functionality of the game still workout.
 +
 +
+
+# 2025-12-02 13:47:51.069971
++the opponent's paddle still crossing to the blue line in the middle, don't make the opponent's paddle cross that blue line or maybe add some allowance so that it cannot cross the blue line.
+
+# 2025-12-02 13:47:51.070426
++the opponent's paddle still crossing to the blue line in the middle, don't make the opponent's paddle cross that blue line or maybe add some allowance so that it cannot cross the blue line.
