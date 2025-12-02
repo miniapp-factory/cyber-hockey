@@ -384,3 +384,9 @@
 
 # 2025-12-02 15:10:55.179126
 +Fix the each side of the wall and each corner to bounce the puck back just like or similar when hitting the puck to a paddle.
+
+# 2025-12-02 15:53:56.442812
++Still not fixing the puck bounces back when collided in the each side of the wall.
+
+# 2025-12-02 15:53:56.443233
++Still not fixing the puck bounces back when collided in the each side of the wall.
