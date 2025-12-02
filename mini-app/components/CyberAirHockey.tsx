@@ -233,7 +233,7 @@ useEffect(() => {
     if (!canvas) return;
     setPaddlePos({
       x: Math.max(0, Math.min(x, canvas.width - PADDLE_WIDTH)),
-      y: Math.max(canvas.width / 2, Math.min(y, canvas.width - PADDLE_HEIGHT)),
+      y: Math.max(canvas.height / 2, Math.min(y, canvas.height - PADDLE_HEIGHT)),
     });
   };
 
