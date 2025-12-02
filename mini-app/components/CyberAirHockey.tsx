@@ -206,15 +206,21 @@ export default function CyberAirHockey() {
     return () => clearInterval(interval);
   }, [puckPos, puckVel, score]);
 
- // AI: move opponent paddle towards puck within its half
+/* ---------- AI movement ---------- */
 useEffect(() => {
   const canvas = canvasRef.current;
   if (!canvas) return;
-  const targetX = Math.max(0, Math.min(puckPos.x - PADDLE_RADIUS, canvas.width - PADDLE_WIDTH));
+  const w = canvas.width;
+  const h = canvas.height;
+  const targetX = Math.max(
+    PADDLE_RADIUS,
+    Math.min(puckPos.x, w - PADDLE_RADIUS)
+  );
   setOpponentPaddlePos((prev) => {
-    const newPos = { ...prev, x: targetX };
-    prevOpponentPaddlePos.current = prev;
-    return newPos;
+    const dx = targetX - prev.x;
+    const maxSpeed = AI_SPEED;
+    const clampedDx = Math.max(-maxSpeed, Math.min(dx, maxSpeed));
+    return { x: prev.x + clampedDx, y: prev.y };
   });
 }, [puckPos, canvasRef]);
 
