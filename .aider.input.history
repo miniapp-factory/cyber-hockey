@@ -254,3 +254,17 @@
 +Make both player and opponent paddle into circle.
 +
 +Make both player and opponent goals wider.
+
+# 2025-12-02 07:25:41.143639
++Additional features to fix.
++
++make the opponent smart that can move in it's area and also paddle the puck, and can follow the puck's movement.
++
++also, add physics when paddle hit the puck and it should have force power to make the puck's move forward that like bounces the puck.
+
+# 2025-12-02 07:25:41.144523
++Additional features to fix.
++
++make the opponent smart that can move in it's area and also paddle the puck, and can follow the puck's movement.
++
++also, add physics when paddle hit the puck and it should have force power to make the puck's move forward that like bounces the puck.
