@@ -230,7 +230,9 @@ useEffect(() => {
     const maxSpeed = AI_SPEED;
     const clampedDx = Math.max(-maxSpeed, Math.min(dx, maxSpeed));
     const clampedDy = Math.max(-maxSpeed, Math.min(dy, maxSpeed));
-    return { x: prev.x + clampedDx, y: prev.y + clampedDy };
+    const newX = prev.x + clampedDx;
+    const newY = Math.max(0, Math.min(prev.y + clampedDy, h / 2 - PADDLE_HEIGHT));
+    return { x: newX, y: newY };
   });
 }, [puckPos, canvasRef]);
 
