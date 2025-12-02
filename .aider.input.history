@@ -268,3 +268,19 @@
 +make the opponent smart that can move in it's area and also paddle the puck, and can follow the puck's movement.
 +
 +also, add physics when paddle hit the puck and it should have force power to make the puck's move forward that like bounces the puck.
+
+# 2025-12-02 08:32:17.034460
++Fix the features:
++
++Fix the score points where player get point if the puck is touched to opponent's goal line and same for the other side.
++
++Adjust the size of the puck a little bit bigger and not bigger than the paddle.
++
+
+# 2025-12-02 08:32:17.034826
++Fix the features:
++
++Fix the score points where player get point if the puck is touched to opponent's goal line and same for the other side.
++
++Adjust the size of the puck a little bit bigger and not bigger than the paddle.
++
