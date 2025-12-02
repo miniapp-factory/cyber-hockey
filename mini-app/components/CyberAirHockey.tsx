@@ -139,8 +139,15 @@ export default function CyberAirHockey() {
       setPuckVel((prev) => {
         let nx = prev.x;
         let ny = prev.y;
-        if (puckPos.x <= PUCK_SIZE / 2 || puckPos.x >= canvas.width - PUCK_SIZE / 2) nx = -prev.x;
-        if (puckPos.y <= PUCK_SIZE / 2 || puckPos.y >= canvas.height - PUCK_SIZE / 2) ny = -prev.y;
+        // Left/right wall collision – reflect the horizontal velocity
+        if (puckPos.x <= PUCK_SIZE / 2 || puckPos.x >= canvas.width - PUCK_SIZE / 2) {
+          // Reflect and slightly dampen to simulate friction
+          nx = -prev.x * 0.95;
+        }
+        // Top/bottom wall collision – reflect the vertical velocity
+        if (puckPos.y <= PUCK_SIZE / 2 || puckPos.y >= canvas.height - PUCK_SIZE / 2) {
+          ny = -prev.y * 0.95;
+        }
         return { x: nx, y: ny };
       });
 
