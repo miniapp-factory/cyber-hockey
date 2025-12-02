@@ -241,7 +241,7 @@ useEffect(() => {
   );
   const isPuckInPlayerArea = puckPos.y > h / 2;
   const targetY = isPuckInPlayerArea
-    ? PADDLE_RADIUS // stay near opponent goal
+    ? PADDLE_RADIUS + 10 // move backward near the yellow goal line when defending
     : puckPos.y; // follow puck vertically
   setOpponentPaddlePos((prev) => {
     const dx = targetX - prev.x;
