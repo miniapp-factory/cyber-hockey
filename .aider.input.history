@@ -408,3 +408,13 @@
 
 # 2025-12-02 18:04:11.983431
 +reduce the bounce back power when the puck collided into the walls, but the puck collided into corner, bounce back power is fine(no change into the corners bounce back power, but only  reduce the walls bounce back power of the puck, if collided into the walls).
+
+# 2025-12-02 23:08:18.266475
++Let's add some improvement on AI/Opponent improvements:
++
++When the puck is on the player's area/field, make the opponent's paddle go backward near on it's goal and only can move horizontally following the puck horizontally. Again, this logic only if the puck is on the player's area/field (think of it like a defense mechanism of the Opponent and also has offense mechanism if the puck is on it's area/field then it can also move vertically into the puck).
+
+# 2025-12-02 23:08:18.267191
++Let's add some improvement on AI/Opponent improvements:
++
++When the puck is on the player's area/field, make the opponent's paddle go backward near on it's goal and only can move horizontally following the puck horizontally. Again, this logic only if the puck is on the player's area/field (think of it like a defense mechanism of the Opponent and also has offense mechanism if the puck is on it's area/field then it can also move vertically into the puck).
