@@ -378,3 +378,9 @@
 +Problem: The goal line of each player is not really functionable, since player goal is all the line of opponent's goal above and same at the opponents goal to the player goal.
 +
 +My Solution I suggest to implement: Only the yellow lines each of opponents and player yellow line can give point if the puck collide within that line, and also make the goal line or yellow line  a little bit wider.
+
+# 2025-12-02 15:10:55.178681
++Fix the each side of the wall and each corner to bounce the puck back just like or similar when hitting the puck to a paddle.
+
+# 2025-12-02 15:10:55.179126
++Fix the each side of the wall and each corner to bounce the puck back just like or similar when hitting the puck to a paddle.
