@@ -308,3 +308,17 @@
 +The Problem: Collision with walls uses BOARD_SIZE but also compares to puckPos which may be in canvas coords; inconsistent.
 +
 +Need to fix: Make the puck bounce back into the field if it's collided in to the wall.
+
+# 2025-12-02 11:32:40.784304
++AI instant teleport and no vertical restriction
++
++AI sets opponent paddle x to targetX immediately, causing teleportation and unrealistic movement. Also AI doesn't restrict movement to its half in a robust way (target clamps are based on BOARD_SIZE).
++Recommendation: interpolate AI movement by limiting max speed, and ensure AI only moves within its half (use canvas.height/2 boundary).
++
+
+# 2025-12-02 11:32:40.784764
++AI instant teleport and no vertical restriction
++
++AI sets opponent paddle x to targetX immediately, causing teleportation and unrealistic movement. Also AI doesn't restrict movement to its half in a robust way (target clamps are based on BOARD_SIZE).
++Recommendation: interpolate AI movement by limiting max speed, and ensure AI only moves within its half (use canvas.height/2 boundary).
++
