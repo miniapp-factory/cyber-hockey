@@ -138,8 +138,8 @@ export default function CyberAirHockey() {
       setPuckVel((prev) => {
         let nx = prev.x;
         let ny = prev.y;
-        if (puckPos.x <= PUCK_SIZE / 2 || puckPos.x >= BOARD_SIZE - PUCK_SIZE / 2) nx = -prev.x;
-        if (puckPos.y <= PUCK_SIZE / 2 || puckPos.y >= BOARD_SIZE - PUCK_SIZE / 2) ny = -prev.y;
+        if (puckPos.x <= PUCK_SIZE / 2 || puckPos.x >= canvas.width - PUCK_SIZE / 2) nx = -prev.x;
+        if (puckPos.y <= PUCK_SIZE / 2 || puckPos.y >= canvas.width - PUCK_SIZE / 2) ny = -prev.y;
         return { x: nx, y: ny };
       });
 
@@ -165,9 +165,9 @@ export default function CyberAirHockey() {
       const cornerCollision = () => {
         const corners = [
           { x: 0, y: 0 },
-          { x: BOARD_SIZE, y: 0 },
-          { x: 0, y: BOARD_SIZE },
-          { x: BOARD_SIZE, y: BOARD_SIZE },
+          { x: canvas.width, y: 0 },
+          { x: 0, y: canvas.width },
+          { x: canvas.width, y: canvas.width },
         ];
         for (const corner of corners) {
           const dx = puckPos.x - corner.x;
@@ -185,14 +185,14 @@ export default function CyberAirHockey() {
       if (puckPos.y <= PUCK_SIZE / 2) {
         setScore((s) => ({ ...s, player: s.player + 1 }));
         resetPuck();
-      } else if (puckPos.y >= BOARD_SIZE - PUCK_SIZE / 2) {
+      } else if (puckPos.y >= canvas.width - PUCK_SIZE / 2) {
         setScore((s) => ({ ...s, enemy: s.enemy + 1 }));
         resetPuck();
       }
     };
 
     const resetPuck = () => {
-      setPuckPos({ x: BOARD_SIZE / 2, y: BOARD_SIZE / 2 });
+      setPuckPos({ x: canvas.width / 2, y: canvas.width / 2 });
       setPuckVel({ x: Math.random() * 4 - 2, y: Math.random() * 4 - 2 });
     };
 
@@ -207,7 +207,7 @@ export default function CyberAirHockey() {
 
 // AI: move opponent paddle towards puck within its half
 useEffect(() => {
-  const targetX = Math.max(0, Math.min(puckPos.x - PADDLE_RADIUS, BOARD_SIZE - PADDLE_WIDTH));
+  const targetX = Math.max(0, Math.min(puckPos.x - PADDLE_RADIUS, canvas.width - PADDLE_WIDTH));
   setOpponentPaddlePos((prev) => {
     const newPos = { ...prev, x: targetX };
     prevOpponentPaddlePos.current = prev;
