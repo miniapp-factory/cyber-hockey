@@ -236,3 +236,21 @@
 
 # 2025-12-02 03:34:47.178820
 +The paddle boundary of the player should be the bottom half board. Please fix it.
+
+# 2025-12-02 05:45:52.299612
++Let's fix some features:
++
++Can you fix the line each corner(it must look like triangle in the corner), that bounce the puck if it's in that line. 
++
++Make both player and opponent paddle into circle.
++
++Make both player and opponent goals wider.
+
+# 2025-12-02 05:45:52.300543
++Let's fix some features:
++
++Can you fix the line each corner(it must look like triangle in the corner), that bounce the puck if it's in that line. 
++
++Make both player and opponent paddle into circle.
++
++Make both player and opponent goals wider.
