@@ -1,4 +1,3 @@
-import { description, title } from "@/lib/metadata";
 import { generateMetadata } from "@/lib/farcaster-embed";
 import CyberAirHockey from "@/components/CyberAirHockey";
 

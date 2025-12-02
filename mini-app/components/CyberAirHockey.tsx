@@ -205,21 +205,23 @@ export default function CyberAirHockey() {
     return () => clearInterval(interval);
   }, [puckPos, puckVel, score]);
 
-// AI: move opponent paddle towards puck within its half
+ // AI: move opponent paddle towards puck within its half
 useEffect(() => {
+  const canvas = canvasRef.current;
+  if (!canvas) return;
   const targetX = Math.max(0, Math.min(puckPos.x - PADDLE_RADIUS, canvas.width - PADDLE_WIDTH));
   setOpponentPaddlePos((prev) => {
     const newPos = { ...prev, x: targetX };
     prevOpponentPaddlePos.current = prev;
     return newPos;
   });
-}, [puckPos]);
+}, [puckPos, canvasRef]);
 
-// Update previous paddle positions after each render
+ // Update previous paddle positions after each render
 useEffect(() => {
   prevPaddlePos.current = paddlePos;
   prevOpponentPaddlePos.current = opponentPaddlePos;
-}, [paddlePos, opponentPaddlePos]);
+}, [paddlePos, opponentPaddlePos, canvasRef]);
 
   // Drag handling
   const handlePointerMove = (e: React.PointerEvent) => {
