@@ -139,11 +139,11 @@ export default function CyberAirHockey() {
       // Collision with walls
       let newVel = { ...puckVel };
       if (newPos.x <= PUCK_SIZE / 2 || newPos.x >= canvas.width - PUCK_SIZE / 2) {
-        newVel.x = -newVel.x * 0.95;
+        newVel.x = -newVel.x * 0.8;
         newPos.x = newPos.x <= PUCK_SIZE / 2 ? PUCK_SIZE / 2 : canvas.width - PUCK_SIZE / 2;
       }
       if (newPos.y <= PUCK_SIZE / 2 || newPos.y >= canvas.height - PUCK_SIZE / 2) {
-        newVel.y = -newVel.y * 0.95;
+        newVel.y = -newVel.y * 0.8;
         newPos.y = newPos.y <= PUCK_SIZE / 2 ? PUCK_SIZE / 2 : canvas.height - PUCK_SIZE / 2;
       }
 
