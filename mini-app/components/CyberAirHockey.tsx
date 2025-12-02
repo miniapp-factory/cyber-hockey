@@ -93,8 +93,8 @@ export default function CyberAirHockey() {
 
       // Draw goals
       ctx.fillStyle = "#ff0";
-      ctx.fillRect(size / 2 - 75, 0, 150, 5); // enemy goal
-      ctx.fillRect(size / 2 - 75, size - 5, 150, 5); // player goal
+      ctx.fillRect(size / 2 - 75, 0, 150, 10); // enemy goal
+      ctx.fillRect(size / 2 - 75, size - 10, 150, 10); // player goal
 
       // Draw opponent paddle
       ctx.fillStyle = "#f0f";
@@ -194,10 +194,14 @@ export default function CyberAirHockey() {
       cornerCollision();
 
       // Goal detection
-      if (puckPos.y <= PUCK_SIZE / 2) {
+      const goalWidth = 150;
+      const goalHeight = 10;
+      const goalX = size / 2 - goalWidth / 2;
+
+      if (puckPos.y <= goalHeight && puckPos.x >= goalX && puckPos.x <= goalX + goalWidth) {
         setScore((s) => ({ ...s, player: s.player + 1 }));
         resetPuck();
-      } else if (puckPos.y >= canvas.height - PUCK_SIZE / 2) {
+      } else if (puckPos.y >= size - goalHeight && puckPos.x >= goalX && puckPos.x <= goalX + goalWidth) {
         setScore((s) => ({ ...s, enemy: s.enemy + 1 }));
         resetPuck();
       }
