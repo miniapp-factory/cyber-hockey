@@ -291,6 +291,7 @@ useEffect(() => {
       <canvas
         ref={canvasRef}
         className="border-2 border-white rounded-lg"
+        style={{ touchAction: 'none', width: '100%', height: '100%' }}
         onPointerDown={handlePointerMove}
         onPointerMove={handlePointerMove}
       />
