@@ -239,18 +239,23 @@ useEffect(() => {
     PADDLE_RADIUS,
     Math.min(puckPos.x, w - PADDLE_RADIUS)
   );
-  const targetY =
-    puckPos.y <= h / 2
-      ? Math.min(puckPos.y, h / 2 - PADDLE_RADIUS * 2)
-      : h / 2 - PADDLE_RADIUS * 2;
+  const isPuckInPlayerArea = puckPos.y > h / 2;
+  const targetY = isPuckInPlayerArea
+    ? PADDLE_RADIUS // stay near opponent goal
+    : puckPos.y; // follow puck vertically
   setOpponentPaddlePos((prev) => {
     const dx = targetX - prev.x;
     const dy = targetY - prev.y;
     const maxSpeed = AI_SPEED;
     const clampedDx = Math.max(-maxSpeed, Math.min(dx, maxSpeed));
-    const clampedDy = Math.max(-maxSpeed, Math.min(dy, maxSpeed));
+    const clampedDy = isPuckInPlayerArea
+      ? 0 // no vertical movement when defending
+      : Math.max(-maxSpeed, Math.min(dy, maxSpeed));
     const newX = prev.x + clampedDx;
-    const newY = Math.max(0, Math.min(prev.y + clampedDy, h / 2 - PADDLE_RADIUS * 2));
+    const newY = Math.max(
+      0,
+      Math.min(prev.y + clampedDy, h / 2 - PADDLE_RADIUS * 2)
+    );
     return { x: newX, y: newY };
   });
 }, [puckPos, canvasRef]);
