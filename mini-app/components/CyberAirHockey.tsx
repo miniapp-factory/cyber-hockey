@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 const BOARD_SIZE = 480; // px, will scale with container
 const PADDLE_WIDTH = 80;
 const PADDLE_HEIGHT = 20;
-const PUCK_SIZE = 20;
+const PUCK_SIZE = 30;
 const PADDLE_RADIUS = 40;
 const FPS = 60;
 
@@ -183,10 +183,10 @@ export default function CyberAirHockey() {
 
       // Goal detection
       if (puckPos.y <= PUCK_SIZE / 2) {
-        setScore((s) => ({ ...s, enemy: s.enemy + 1 }));
+        setScore((s) => ({ ...s, player: s.player + 1 }));
         resetPuck();
       } else if (puckPos.y >= BOARD_SIZE - PUCK_SIZE / 2) {
-        setScore((s) => ({ ...s, player: s.player + 1 }));
+        setScore((s) => ({ ...s, enemy: s.enemy + 1 }));
         resetPuck();
       }
     };
