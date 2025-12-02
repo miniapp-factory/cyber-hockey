@@ -21,6 +21,7 @@ export default function CyberAirHockey() {
   const [puckPos, setPuckPos] = useState<Position>({ x: BOARD_SIZE / 2, y: BOARD_SIZE / 2 });
   const [puckVel, setPuckVel] = useState<Position>({ x: 2, y: 2 });
   const [score, setScore] = useState({ player: 0, enemy: 0 });
+  const [winner, setWinner] = useState<string | null>(null);
 
   // Resize canvas to fit container
   useEffect(() => {
@@ -197,11 +198,15 @@ export default function CyberAirHockey() {
       const goalX = canvas.width / 2 - goalWidth / 2;
 
       if (newPos.y <= goalHeight && newPos.x >= goalX && newPos.x <= goalX + goalWidth) {
-        setScore((s) => ({ ...s, player: s.player + 1 }));
+        const newPlayerScore = score.player + 1;
+        setScore((s) => ({ ...s, player: newPlayerScore }));
+        if (newPlayerScore >= 5) setWinner('Player');
         resetPuck();
         return;
       } else if (newPos.y >= canvas.height - goalHeight && newPos.x >= goalX && newPos.x <= goalX + goalWidth) {
-        setScore((s) => ({ ...s, enemy: s.enemy + 1 }));
+        const newEnemyScore = score.enemy + 1;
+        setScore((s) => ({ ...s, enemy: newEnemyScore }));
+        if (newEnemyScore >= 5) setWinner('Enemy');
         resetPuck();
         return;
       }
@@ -222,7 +227,7 @@ export default function CyberAirHockey() {
 
     const interval = setInterval(loop, 1000 / FPS);
     return () => clearInterval(interval);
-  }, [puckPos, puckVel, score]);
+  }, [puckPos, puckVel, score, winner]);
 
 /* ---------- AI movement ---------- */
 useEffect(() => {
@@ -271,13 +276,18 @@ useEffect(() => {
   };
 
   return (
-    <div className="w-full h-full flex items-center justify-center">
+    <div className="w-full h-full flex items-center justify-center relative">
       <canvas
         ref={canvasRef}
         className="border-2 border-white rounded-lg"
         onPointerDown={handlePointerMove}
         onPointerMove={handlePointerMove}
       />
+      {winner && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70">
+          <div className="text-4xl text-white font-bold">{winner} Wins!</div>
+        </div>
+      )}
     </div>
   );
 }
