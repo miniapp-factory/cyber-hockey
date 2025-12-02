@@ -418,3 +418,9 @@
 +Let's add some improvement on AI/Opponent improvements:
 +
 +When the puck is on the player's area/field, make the opponent's paddle go backward near on it's goal and only can move horizontally following the puck horizontally. Again, this logic only if the puck is on the player's area/field (think of it like a defense mechanism of the Opponent and also has offense mechanism if the puck is on it's area/field then it can also move vertically into the puck).
+
+# 2025-12-02 23:22:23.835497
++Make the opponent paddle move backward near on yellow lines when on defensive move.
+
+# 2025-12-02 23:22:23.837118
++Make the opponent paddle move backward near on yellow lines when on defensive move.
