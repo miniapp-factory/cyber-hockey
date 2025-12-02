@@ -6,6 +6,7 @@ const BOARD_SIZE = 480; // px, will scale with container
 const PADDLE_WIDTH = 80;
 const PADDLE_HEIGHT = 20;
 const PUCK_SIZE = 20;
+const PADDLE_RADIUS = 40;
 const FPS = 60;
 
 type Position = { x: number; y: number };
@@ -58,35 +59,55 @@ export default function CyberAirHockey() {
       ctx.setLineDash([]);
 
       // Draw angled corner lines
-      ctx.strokeStyle = "#0f0";
-      ctx.lineWidth = 2;
+      ctx.fillStyle = "#0f0";
       ctx.beginPath();
       ctx.moveTo(0, 0);
-      ctx.lineTo(size * 0.1, size * 0.1);
+      ctx.lineTo(size * 0.1, 0);
+      ctx.lineTo(0, size * 0.1);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.beginPath();
       ctx.moveTo(size, 0);
-      ctx.lineTo(size * 0.9, size * 0.1);
+      ctx.lineTo(size * 0.9, 0);
+      ctx.lineTo(size, size * 0.1);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.beginPath();
       ctx.moveTo(0, size);
-      ctx.lineTo(size * 0.1, size * 0.9);
+      ctx.lineTo(0, size * 0.9);
+      ctx.lineTo(size * 0.1, size);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.beginPath();
       ctx.moveTo(size, size);
-      ctx.lineTo(size * 0.9, size * 0.9);
-      ctx.stroke();
+      ctx.lineTo(size, size * 0.9);
+      ctx.lineTo(size * 0.9, size);
+      ctx.closePath();
+      ctx.fill();
 
       // Draw goals
       ctx.fillStyle = "#ff0";
-      ctx.fillRect(size / 2 - 50, 0, 100, 5); // enemy goal
-      ctx.fillRect(size / 2 - 50, size - 5, 100, 5); // player goal
+      ctx.fillRect(size / 2 - 75, 0, 150, 5); // enemy goal
+      ctx.fillRect(size / 2 - 75, size - 5, 150, 5); // player goal
 
       // Draw opponent paddle
       ctx.fillStyle = "#f0f";
       ctx.shadowColor = "#f0f";
       ctx.shadowBlur = 10;
-      ctx.fillRect(opponentPaddlePos.x, opponentPaddlePos.y, PADDLE_WIDTH, PADDLE_HEIGHT);
+      ctx.beginPath();
+      ctx.arc(opponentPaddlePos.x + PADDLE_RADIUS, opponentPaddlePos.y + PADDLE_RADIUS, PADDLE_RADIUS, 0, Math.PI * 2);
+      ctx.fill();
 
       // Draw player paddle
       ctx.fillStyle = "#00f";
       ctx.shadowColor = "#00f";
       ctx.shadowBlur = 10;
-      ctx.fillRect(paddlePos.x, paddlePos.y, PADDLE_WIDTH, PADDLE_HEIGHT);
+      ctx.beginPath();
+      ctx.arc(paddlePos.x + PADDLE_RADIUS, paddlePos.y + PADDLE_RADIUS, PADDLE_RADIUS, 0, Math.PI * 2);
+      ctx.fill();
 
       // Draw puck
       ctx.fillStyle = "#f0f";
@@ -122,15 +143,33 @@ export default function CyberAirHockey() {
 
       // Collision with paddles
       const paddleCollision = (paddle: Position) => {
-        const dx = puckPos.x - (paddle.x + PADDLE_WIDTH / 2);
-        const dy = puckPos.y - (paddle.y + PADDLE_HEIGHT / 2);
+        const dx = puckPos.x - (paddle.x + PADDLE_RADIUS);
+        const dy = puckPos.y - (paddle.y + PADDLE_RADIUS);
         const distance = Math.sqrt(dx * dx + dy * dy);
-        return distance < PUCK_SIZE / 2 + Math.max(PADDLE_WIDTH, PADDLE_HEIGHT) / 2;
+        return distance < PUCK_SIZE / 2 + PADDLE_RADIUS;
       };
 
       if (paddleCollision(paddlePos) || paddleCollision(opponentPaddlePos)) {
         setPuckVel((prev) => ({ x: -prev.x, y: -prev.y }));
       }
+      const cornerCollision = () => {
+        const corners = [
+          { x: 0, y: 0 },
+          { x: BOARD_SIZE, y: 0 },
+          { x: 0, y: BOARD_SIZE },
+          { x: BOARD_SIZE, y: BOARD_SIZE },
+        ];
+        for (const corner of corners) {
+          const dx = puckPos.x - corner.x;
+          const dy = puckPos.y - corner.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < PUCK_SIZE / 2 + 10) {
+            setPuckVel((prev) => ({ x: -prev.x, y: -prev.y }));
+            break;
+          }
+        }
+      };
+      cornerCollision();
 
       // Goal detection
       if (puckPos.y <= PUCK_SIZE / 2) {
