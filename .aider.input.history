@@ -472,3 +472,11 @@
 
 # 2025-12-03 01:45:04.012967
 +Make the game 100% length size, make sure it still accurately point the cursor and touch on player's paddle, and don't make the game stretch when on mobile. The game UI and functionality is still intact that follows the new canvas size.
+
+# 2025-12-03 02:04:04.093617
++make the cursor hide, and make it responsive on mobile and follow the cursor or touch into player's paddle. Make sure, the canvas does not stretch into mobile.
++
+
+# 2025-12-03 02:04:04.094103
++make the cursor hide, and make it responsive on mobile and follow the cursor or touch into player's paddle. Make sure, the canvas does not stretch into mobile.
++
