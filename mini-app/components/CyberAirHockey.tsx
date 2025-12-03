@@ -23,6 +23,19 @@ export default function CyberAirHockey() {
   const [score, setScore] = useState({ player: 0, enemy: 0 });
   const [winner, setWinner] = useState<string | null>(null);
 
+  const resetPuck = () => {
+    setPuckPos({ x: BOARD_SIZE / 2, y: BOARD_SIZE / 2 });
+    setPuckVel({ x: Math.random() * 4 - 2, y: Math.random() * 4 - 2 });
+  };
+
+  const resetGame = () => {
+    setScore({ player: 0, enemy: 0 });
+    setWinner(null);
+    resetPuck();
+    setPaddlePos({ x: BOARD_SIZE / 2 - PADDLE_WIDTH / 2, y: BOARD_SIZE - PADDLE_HEIGHT - 10 });
+    setOpponentPaddlePos({ x: BOARD_SIZE / 2 - PADDLE_WIDTH / 2, y: 10 });
+  };
+
   // Resize canvas to fit container
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -221,10 +234,6 @@ export default function CyberAirHockey() {
       setPuckVel(newVel);
     };
 
-    const resetPuck = () => {
-      setPuckPos({ x: canvas.width / 2, y: canvas.height / 2 });
-      setPuckVel({ x: Math.random() * 4 - 2, y: Math.random() * 4 - 2 });
-    };
 
     const loop = () => {
       update();
@@ -296,8 +305,14 @@ useEffect(() => {
         onPointerMove={handlePointerMove}
       />
       {winner && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70">
-          <div className="text-4xl text-white font-bold">{winner} Wins!</div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-70">
+          <div className="text-4xl text-white font-bold mb-4">{winner} Wins!</div>
+          <button
+            className="px-6 py-3 bg-white text-black rounded-md hover:bg-gray-200"
+            onClick={resetGame}
+          >
+            Play Again
+          </button>
         </div>
       )}
     </div>
