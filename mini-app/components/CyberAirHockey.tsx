@@ -287,11 +287,11 @@ useEffect(() => {
   };
 
   return (
-    <div className="w-full h-screen flex items-center justify-center relative">
+    <div className="w-full max-w-[480px] aspect-square mx-auto flex items-center justify-center relative">
       <canvas
         ref={canvasRef}
         className="border-2 border-white rounded-lg"
-        style={{ touchAction: 'none', width: '100%', height: '100%' }}
+        style={{ touchAction: 'none', width: '100%', height: '100%', cursor: 'pointer' }}
         onPointerDown={handlePointerMove}
         onPointerMove={handlePointerMove}
       />
