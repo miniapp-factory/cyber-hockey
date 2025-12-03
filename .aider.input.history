@@ -466,3 +466,9 @@
 
 # 2025-12-03 00:03:21.696248
 +Make the cursor pointer(when on desktop) and touch pointer(when on mobile) accurately in the middle of the player's paddle. Lastly, don't stretch the game screen canvas when on mobile.
+
+# 2025-12-03 01:45:04.011842
++Make the game 100% length size, make sure it still accurately point the cursor and touch on player's paddle, and don't make the game stretch when on mobile. The game UI and functionality is still intact that follows the new canvas size.
+
+# 2025-12-03 01:45:04.012967
++Make the game 100% length size, make sure it still accurately point the cursor and touch on player's paddle, and don't make the game stretch when on mobile. The game UI and functionality is still intact that follows the new canvas size.
