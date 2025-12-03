@@ -111,25 +111,35 @@ export default function CyberAirHockey() {
       ctx.fillRect(size / 2 - 75, size - 10, 150, 10); // player goal
 
       // Draw opponent paddle
-      ctx.fillStyle = "#f0f";
-      ctx.shadowColor = "#f0f";
+      ctx.fillStyle = "#ff00ff";
+      ctx.shadowColor = "#ff00ff";
       ctx.shadowBlur = 10;
       ctx.beginPath();
       ctx.arc(opponentPaddlePos.x + PADDLE_RADIUS, opponentPaddlePos.y + PADDLE_RADIUS, PADDLE_RADIUS, 0, Math.PI * 2);
       ctx.fill();
+      // Inner handler circle
+      ctx.fillStyle = "#ffffff";
+      ctx.beginPath();
+      ctx.arc(opponentPaddlePos.x + PADDLE_RADIUS, opponentPaddlePos.y + PADDLE_RADIUS, PADDLE_RADIUS / 3, 0, Math.PI * 2);
+      ctx.fill();
 
       // Draw player paddle
-      ctx.fillStyle = "#00f";
-      ctx.shadowColor = "#00f";
+      ctx.fillStyle = "#00aaff";
+      ctx.shadowColor = "#00aaff";
       ctx.shadowBlur = 10;
       ctx.beginPath();
       ctx.arc(paddlePos.x + PADDLE_RADIUS, paddlePos.y + PADDLE_RADIUS, PADDLE_RADIUS, 0, Math.PI * 2);
       ctx.fill();
+      // Inner handler circle
+      ctx.fillStyle = "#ffffff";
+      ctx.beginPath();
+      ctx.arc(paddlePos.x + PADDLE_RADIUS, paddlePos.y + PADDLE_RADIUS, PADDLE_RADIUS / 3, 0, Math.PI * 2);
+      ctx.fill();
 
       // Draw puck
-      ctx.fillStyle = "#f0f";
-      ctx.shadowColor = "#f0f";
-      ctx.shadowBlur = 15;
+      ctx.fillStyle = "#ff00ff";
+      ctx.shadowColor = "#ff00ff";
+      ctx.shadowBlur = 20;
       ctx.beginPath();
       ctx.arc(puckPos.x, puckPos.y, PUCK_SIZE / 2, 0, Math.PI * 2);
       ctx.fill();
@@ -296,7 +306,7 @@ useEffect(() => {
   };
 
   return (
-    <div className="w-full max-w-[480px] aspect-square mx-auto flex items-center justify-center relative">
+    <div className="w-full max-w-[480px] aspect-square mx-auto flex items-center justify-center relative" style={{ border: '2px solid #ffffff', borderRadius: '12px' }}>
       <canvas
         ref={canvasRef}
         className="border-2 border-white rounded-lg"
