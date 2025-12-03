@@ -460,3 +460,9 @@
 # 2025-12-02 23:56:05.927335
 +if possible, make the game screen 100% height and and 100% width when only on mobile.
 +
+
+# 2025-12-03 00:03:21.695915
++Make the cursor pointer(when on desktop) and touch pointer(when on mobile) accurately in the middle of the player's paddle. Lastly, don't stretch the game screen canvas when on mobile.
+
+# 2025-12-03 00:03:21.696248
++Make the cursor pointer(when on desktop) and touch pointer(when on mobile) accurately in the middle of the player's paddle. Lastly, don't stretch the game screen canvas when on mobile.
