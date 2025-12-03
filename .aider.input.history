@@ -480,3 +480,9 @@
 # 2025-12-03 02:04:04.094103
 +make the cursor hide, and make it responsive on mobile and follow the cursor or touch into player's paddle. Make sure, the canvas does not stretch into mobile.
 +
+
+# 2025-12-03 09:48:35.902650
++When there is a result for the winner, there should be also a play again button. To allow player to play again.
+
+# 2025-12-03 09:48:35.903024
++When there is a result for the winner, there should be also a play again button. To allow player to play again.
